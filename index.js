@@ -40,9 +40,6 @@ input.value = 'Hello World';
 var submit = document.querySelector('input[type="submit"]');
 submit.value = "SEND";
 
-var lastItem = document.querySelector('.list-group-item:last-child');
-lastItem.style.color = 'blue';
-
 var secondItem = document.querySelector('.list-group-item:nth-child(2)');
 secondItem.style.color='coral';
 
@@ -54,5 +51,19 @@ var odd = document.querySelectorAll('li:nth-child(odd)');
 
 for(var i=0;i<odd.length;i++){
     odd[i].style.backgroundColor = "#f4f4f4";
-    
+
 }
+
+var items = document.querySelectorAll('.list-group-item');
+items[2].style.backgroundColor = "green";
+
+for (var i=0;i<items.length;i++){
+	items[i].style.fontWeight = "bold";
+	items[i].style.color = "black";
+}
+
+var listItem=document.getElementsByClassName('new-list-ele');
+listItem[0].style.backgroundColor = "black";
+
+var listItemName = document.getElementsByTagName('li');
+listItemName[4].style.color = "white";
