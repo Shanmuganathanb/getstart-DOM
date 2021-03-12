@@ -1,0 +1,25 @@
+1)
+head
+    h1
+        #text Title
+body
+    input type="text" name="Name"
+    input type="button" value="Submit"
+    
+2)
+document.title = "Item";
+
+3)
+1-
+innerText - Will take styles into consideration
+textContent - Will give all the text inside the tag 
+
+eg. <h1>Hello<span style="display:none">World</spam></h1>
+    Here innerText of h1 will be "Hello"
+    and textContent of h1 will be "Hello World"
+2-
+document.title.style.border = "1px solid black";
+3-
+document.querySelector("#main h2").style.fontSize = "bold";
+document.querySelector("#main h2").style.fontColor = "green";
+
