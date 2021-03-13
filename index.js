@@ -1,113 +1,65 @@
-// manipulate document title
-document.title = "Items";
-// Examine document objects
-console.dir(document);
-// HTML collection of items in the document
-console.log(document.all);
-// All forms
-console.log(document.forms);
-// All link tag
-console.log(document.links);
+var form = document.getElementById("addForm");
+var itemList = document.getElementById("items");
+var filter = document.getElementById("filter");
 
-// getElementByID 
-console.log(document.getElementById("main-header"));
+var li = document.createElement('li')
+var delBtn = document.createElement('button');
+delBtn.title = "Delete lastly added Item";
+delBtn.className ="btn btn-danger btn-md float-right mr-5 delete";
+delBtn.appendChild(document.createTextNode('X'));
+document.querySelectorAll('h2.title')[1].appendChild(delBtn);
 
-//innerText pays attention to styles inside
-//textContent will give whatever text is inside regardless of display-none
-var headerTitle = document.getElementById('header-title'); 
-console.log(headerTitle.innerText);
-console.log(headerTitle.textContent);
+form.addEventListener('submit',addItem);
+delBtn.addEventListener('click',delItem);
+itemList.addEventListener('click',removeItem);
+filter.addEventListener('keyup',filterItems);
 
-
-// Change the style and use camelcase for style type
-headerTitle.style.borderBottom = "solid 3px #000";
-
-var items = document.getElementsByClassName('list-group-item');
-console.log(items);
-
-
-document.querySelector("h2.title").style.fontWeight = "bold";
-document.querySelector("h2.title").style.color = "green";
-
-// querySelector
-var header = document.querySelector("#main-header");
-header.style.borderBottom = 'solid 4px #ccc';
-
-var input = document.querySelector('input');
-input.value = 'Hello World';
-
-var submit = document.querySelector('input[type="submit"]');
-submit.value = "SEND";
-
-var secondItem = document.querySelector('.list-group-item:nth-child(2)');
-secondItem.style.color='coral';
-
-// queryselectorall
-var titles = document.querySelectorAll('.title');
-titles[0].textContent = "Hello";
-
-// var odd = document.querySelectorAll('li:nth-child(odd)');
-
-// for(var i=0;i<odd.length;i++){
-//     odd[i].style.backgroundColor = "#f4f4f4";
-
-// }
-
-var items = document.querySelectorAll('.list-group-item');
-items[2].style.backgroundColor = "green";
-
-for (var i=0;i<items.length;i++){
-	items[i].style.fontWeight = "bold";
-	items[i].style.color = "black";
+function removeItem(e){
+  if(e.target.classList.contains('delete')){
+    var li = e.target.parentElement;
+    itemList.removeChild(li);
+  }
+  if(e.target.classList.contains('edit')){
+    var li = e.target.parentElement;
+    document.getElementById("item").value = li.firstChild.textContent;
+    itemList.removeChild(li);
+  }
+}
+function delItem(e){
+    var items = document.getElementsByTagName('li');
+    if(items.length){
+        var li = document.querySelector('ul').lastElementChild;
+        itemList.removeChild(li);
+    }
+}
+      
+function addItem(e){
+    e.preventDefault();
+    var inputItem = document.getElementById("item").value;
+    var li = document.createElement('li');
+    li.className = "list-group-item";
+    li.appendChild(document.createTextNode(inputItem));
+    var deleteBtn = document.createElement('button');
+    deleteBtn.className = "btn btn-danger btn-sm float-right delete";
+    deleteBtn.appendChild(document.createTextNode('X'));
+    li.appendChild(deleteBtn);
+    var editBtn = document.createElement('button');
+    editBtn.className ="btn btn-warning btn-sm float-right edit";
+    editBtn.appendChild(document.createTextNode('Edit'));
+    li.appendChild(editBtn);
+    itemList.appendChild(li);
 }
 
-var listItem=document.getElementsByClassName('new-list-ele');
-listItem[0].style.backgroundColor = "black";
 
-var listItemName = document.getElementsByTagName('li');
-listItemName[4].style.color = "white";
-
-listItemName[1].style.backgroundColor = "green";
-listItemName[2].style.display = "none";
-
-
-var odd = document.querySelectorAll('li:nth-child(odd)');
-for(var i=0;i<odd.length;i++){
-	odd[i].style.backgroundColor = 'black';
-	odd[i].style.color="green";
-}
-
-// parentElement
-listItemName[2].parentElement.style.border ="thick solid #fff";
-// lastelementchild
-console.log(document.querySelector('ul').lastElementChild);
-document.querySelector('ul').lastElementChild.style.fontWeight ="bold";
-// lastchild
-console.log(document.querySelector('ul').lastChild);
-
-// appendchild,createElement,createTextNode
-var node = document.createElement("li");
-var textnode = document.createTextNode("Item 6");
-node.appendChild(textnode);
-document.querySelector("ul#items").appendChild(node);
-
-//firstElementChild and firstChild
-document.querySelector('ul').firstElementChild.style.color = "white";
-console.log(document.querySelector('ul').firstChild);
-
-// nextsibling and nextElementsibling
-console.log(document.querySelector('li.new-list-ele').nextSibling);
-document.querySelector('li.new-list-ele').nextElementSibling.innerText = "hello";
-
-// previoussibling and previousElementsibling
-console.log(document.querySelector('li.new-list-ele').previousSibling);
-document.querySelector('li.new-list-ele').previousElementSibling.innerText = "hi";
-
-// setAttribute
-document.querySelector("input[type='submit']").setAttribute("id","submit-btn");
-
-
- // changing the html content
-//  headerTitle.parentElement = "<h3>Hello</h3>";
-headerTitle.insertAdjacentText("beforebegin", "HEllo");
-document.querySelector('li:nth-child(1)').insertAdjacentText("beforebegin","HEllo");
+function filterItems(e){
+    var text = e.target.value.toLowerCase();
+    var items = itemList.getElementsByTagName('li');
+    Array.from(items).forEach(function(item){
+      var itemName = item.firstChild.textContent;
+      if(itemName.toLowerCase().indexOf(text) != -1){
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
