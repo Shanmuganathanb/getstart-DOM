@@ -23,15 +23,60 @@
        <div id="main" class="card card-body">
         <h2 class="title">Add Items</h2>
         <form id="addForm" class="form-inline mb-3">
-          <input type="text" class="form-control mr-2" id="item">
-          <input type="submit" class="btn btn-dark" value="Submit">
+          <input type="text" class="form-control mr-2" id="item" placeholder="Item Name" required>
+          <input type="text" class="form-control mr-2 w-100" id="item-description" placeholder="Description" required>
+          <input type="submit" class="btn btn-dark m-2" value="Submit">
         </form>
         <h2 class="title ml-5">Items</h2>
         <ul id="items" class="list-group">
-          <li class="list-group-item">Item 1 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-warning btn-sm float-right edit">Edit</button></li>
-          <li class="list-group-item">Item 2 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-warning btn-sm float-right edit">Edit</button></li>
-          <li class="list-group-item">Item 3 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-warning btn-sm float-right edit">Edit</button></li>
-          <li class="list-group-item">Item 4 <button class="btn btn-danger btn-sm float-right delete">X</button><button class="btn btn-warning btn-sm float-right edit">Edit</button></li>
+          <li class="list-group-item">
+            <div>
+              <h5 class="text-primary d-inline">Item Name :</h5>
+                <h6 class="m-0 p-0 d-inline">Item 1</h6>
+              </div>
+              <div>
+                <h5 class="text-primary d-inline">Description :</h5>
+                  <p class="m-0 p-0 d-inline">first</p>
+              </div>
+            <button class="btn mr-2 btn-danger btn-sm float-right delete">X</button>
+            <button class="btn mr-2 btn-warning btn-sm float-right edit">Edit</button>
+          </li>
+          <li class="list-group-item">
+            <div>
+              <h5 class="text-primary d-inline">Item Name :</h5>
+                <h6 class="m-0 p-0 d-inline">Item 2</h6>
+              </div>
+              <div>
+                <h5 class="text-primary d-inline">Description :</h5>
+                  <p class="m-0 p-0 d-inline">second</p>
+                </div>
+            <button class="btn mr-2 btn-danger btn-sm float-right delete mr-2">X</button>
+            <button class="btn mr-2 btn-warning btn-sm float-right edit">Edit</button>
+          </li>
+          <li class="list-group-item">
+            <div>
+            <h5 class="text-primary d-inline">Item Name :</h5>
+              <h6 class="m-0 p-0 d-inline">Item 3</h6>
+            </div>
+            <div>
+              <h5 class="text-primary d-inline">Description :</h5>
+                <p class="m-0 p-0 d-inline">third</p>
+              </div>
+               <button class="btn mr-2 btn-danger btn-sm float-right delete">X</button>
+               <button class="btn mr-2 btn-warning btn-sm float-right edit">Edit</button>
+              </li>
+          <li class="list-group-item">
+            <div>
+            <h5 class="text-primary d-inline">Item Name :</h5>
+              <h6 class="m-0 p-0 d-inline">Item 4</h6>
+            </div>
+            <div>
+              <h5 class="text-primary d-inline">Description :</h5>
+                <p class="m-0 p-0 d-inline">fourth</p>
+              </div>
+               <button class="btn mr-2 btn-danger btn-sm float-right delete">X</button>
+               <button class="btn mr-2 btn-warning btn-sm float-right edit">Edit</button>
+              </li>
         </ul>
        </div>
     </div>
